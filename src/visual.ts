@@ -34,6 +34,13 @@ import IVisual = powerbi.extensibility.visual.IVisual;
 import IVisualLocalStorageV2Service = powerbi.extensibility.IVisualLocalStorageV2Service;
 import PrivilegeStatus = powerbi.PrivilegeStatus; 
 
+const PrivilegeStatusString = {
+    [PrivilegeStatus.Allowed]: "Allowed",
+    [PrivilegeStatus.NotDeclared]: "Not declared",
+    [PrivilegeStatus.NotSupported]: "Not supported",
+    [PrivilegeStatus.DisabledByAdmin]: "Disabled by admin",
+};
+
 export class Visual implements IVisual {
     private target: HTMLElement;
     private get_input: HTMLInputElement;
@@ -123,7 +130,7 @@ export class Visual implements IVisual {
         }
     }
     public async onStatusButtonClick(): Promise<void> {
-        this.status_result_text.textContent = (await this.storageV2Service.status()).toString();
+        this.status_result_text.textContent = PrivilegeStatusString[(await this.storageV2Service.status())];
     }
 
     public async onGetButtonClick(): Promise<void> {
