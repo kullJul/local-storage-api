@@ -1,0 +1,13 @@
+{
+    "dataRoles": [],
+    "objects": {},
+    "dataViewMappings": [],
+    "privileges": [
+        {
+            "name": "LocalStorage",
+            "essential": true
+        }
+    ],
+    "supportsLandingPage": true,
+    "supportsEmptyDataView": true
+}
